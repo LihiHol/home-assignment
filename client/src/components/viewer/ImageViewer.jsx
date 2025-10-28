@@ -42,7 +42,6 @@ export default function ImageViewer({
 
   return (
     <Box sx={{ width: "100%", display: "inline-block" }}>
-      {/* Relative wrapper to anchor absolute overlay */}
       <Box
         sx={{
           position: "relative",

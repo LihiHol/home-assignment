@@ -1,9 +1,11 @@
 from fastapi import APIRouter, HTTPException, Query
+from fastapi.responses import FileResponse
 from pathlib import Path
-import os
+import os, mimetypes
 from app.db.mongo import db 
 
 router = APIRouter(prefix="/api/images", tags=["images"])
+IMAGE_BASE_DIR = Path(os.getenv("IMAGE_BASE_DIR", "/home/ib-test/Documents/images")).resolve()
 
 @router.get("/")
 def get_images():

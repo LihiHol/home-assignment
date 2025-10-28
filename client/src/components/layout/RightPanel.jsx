@@ -32,7 +32,6 @@ export default function RightPanel({
       }}
     >
       <Paper
-        // elevation={3}
         sx={{
           height: "100%",
           p: 2,
@@ -47,11 +46,9 @@ export default function RightPanel({
           onChange={(img) => {
             setImage(img);
             onImageResolved?.(img);
-            // Optional: clear any existing annotations when switching image
-            // onAnnotationsLoaded?.([]);
           }}
         />
-        {/* Fetch ONLY on button click */}
+        {/* Fetch only on button click */}
         <ShowAnnotationsButton
           image={image}
           threshold={threshold}

@@ -2,19 +2,25 @@ import React from "react";
 import { Button, Stack, Box } from "@mui/material";
 import PaletteIcon from "@mui/icons-material/Palette";
 
-/**
- BoxColorButton -Cycles through a palette of colors for annotation boxes
- Props:- value: current color string, onChange: (nextColor) => void,palette?: string[] (optional, default provided)
-**/
+/** BoxColorButton -Cycles through a palette of colors for annotation boxes**/
 export default function BoxColorButton({ value, onChange, palette }) {
   const colors = palette?.length
     ? palette
     : ["#e53935", "#1e88e5", "#43a047", "#fdd835", "#8e24aa"];
 
   const handleClick = () => {
-    const idx = colors.indexOf(value);
-    const next = idx === -1 ? colors[0] : colors[(idx + 1) % colors.length];
-    onChange?.(next);
+    let nextColor;
+    if (!value) {
+      nextColor = colors[0];
+    }
+    else if (value === colors[colors.length - 1]) {
+      nextColor = colors[0];
+    }
+    else {
+      const currentIndex = colors.indexOf(value);
+      nextColor = colors[currentIndex + 1];
+    }
+    onChange && onChange(nextColor);
   };
 
   return (
