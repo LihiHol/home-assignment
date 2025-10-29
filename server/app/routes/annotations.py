@@ -3,7 +3,6 @@ from app.db.mongo import db
 
 router = APIRouter(prefix="/api/annotations", tags=["annotations"])
 
-
 # @router.get("/by-id")
 # def get_annotations(image_id: str = Query(...), min_score: float = Query(0.0)):
 #     """
@@ -40,10 +39,10 @@ def get_annotations(image_id: str = Query(...), min_score: float = Query(0.0)):
     filtered by minimum score.
     """
     try:
-        # Build a flexible $or to match either string or ObjectId storage
+        # $or to match either string or ObjectId storage
         or_clauses = [{"image_id": image_id}]
         try:
-            oid = ObjectId(image_id)          # valid hex? add ObjectId forms too
+            oid = ObjectId(image_id)          # add ObjectId forms too
             or_clauses.append({"image_id": oid})
             or_clauses.append({"image_id": str(oid)})
         except Exception:

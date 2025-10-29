@@ -7,7 +7,7 @@ import os
 from app.routes.images import router as images_router
 from app.routes.annotations import router as annotations_router
 
-app = FastAPI(title="Image Annotation API")  
+app = FastAPI(title="API")  
 
 app.add_middleware(
     CORSMiddleware,

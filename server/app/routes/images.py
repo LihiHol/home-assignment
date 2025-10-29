@@ -33,7 +33,6 @@ def get_image_by_name(filename: str = Query(...)):
     Returns unified payload {id, filename, width, height, url}
     """
     try:
-        # defend against 'C:\\fakepath\\file.jpg' from browsers
         base_name = Path(filename).name
         # IMAGE_BASE_DIR = Path(os.getenv("IMAGE_BASE_DIR", r"C:\Users\Omer\Desktop\ib-test\Documents\Images"))
         doc = db["images"].find_one(
